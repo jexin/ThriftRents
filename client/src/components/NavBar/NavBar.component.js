@@ -20,7 +20,7 @@ class NavBar extends Component {
                   <NavDropdown.Item as={NavLink} to="/my-listings">Manage Listings</NavDropdown.Item>
                   <NavDropdown.Divider />
                   <GoogleLogout
-                    clientId={process.env.GOOGLE_OATH_URL}
+                    clientId="542275019926-pte2khv5ugm3uqoinn3qq30an9k1esq8.apps.googleusercontent.com"
                     buttonText="Logout"
                     onLogoutSuccess={this.props.logout}
                   >
@@ -28,7 +28,7 @@ class NavBar extends Component {
                 </NavDropdown>
               ) : (
                 <GoogleLogin
-                  clientId={process.env.GOOGLE_OATH_URL}
+                  clientId="542275019926-pte2khv5ugm3uqoinn3qq30an9k1esq8.apps.googleusercontent.com"
                   buttonText="Login"
                   onSuccess={this.props.responseGoogle}
                   onFailure={this.props.responseGoogle}
