@@ -20,7 +20,7 @@ class FilterBar extends Component {
     }
   
     componentDidMount() {
-      axios.get('http://localhost:5000/listings/')
+      axios.get('https://thriftrents.herokuapp.com/listings/')
         .then(res => {
           this.setState({ 
             listings: res.data

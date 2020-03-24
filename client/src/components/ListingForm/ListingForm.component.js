@@ -78,7 +78,7 @@ class ListingForm extends Component {
 
   componentDidMount() {
     if (this.props.edit) {
-        axios.get('http://localhost:5000/listings/')
+        axios.get('https://thriftrents.herokuapp.com/listings/')
         .then(res => {
           let listing = res.data.find(el => el._id === this.props.match.params.id)
           let images = [];
@@ -345,14 +345,14 @@ class ListingForm extends Component {
     data.append('listing', JSON.stringify(listing));
 
     if (!this.props.edit) {
-        axios.post('http://localhost:5000/listings/add', data)
+        axios.post('https://thriftrents.herokuapp.com/listings/add', data)
         .then(res => {
             console.log(res.data)
             window.location = '/';
         })
         .catch((err) => console.log(err))
     } else {
-        axios.post('http://localhost:5000/listings/update/' + this.props.match.params.id, data)
+        axios.post('https://thriftrents.herokuapp.com/listings/update/' + this.props.match.params.id, data)
         .then(res => {
             console.log(res.data)
             window.location = '/details/'+ this.props.match.params.id;
