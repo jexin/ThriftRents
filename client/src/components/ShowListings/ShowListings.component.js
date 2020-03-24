@@ -94,8 +94,8 @@ class ShowListings extends Component {
   mapListings() {
 
     return this.state.listings.map(listing => {
-      let hover = this.state.hovered === listing._id && 'hover';
-      let hovered = this.state.hovered === listing._id && 'hovered';
+      let hover = this.state.hovered === listing._id ? 'hover' : '';
+      let hovered = this.state.hovered === listing._id ? 'hovered' : '';
 
       return (
         <NavLink key={listing._id} to={'/details/'+ listing._id}>

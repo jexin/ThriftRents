@@ -48,7 +48,7 @@ class ViewListing extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/listings/')
+    axios.get('https://thriftrents.herokuapp.com/listings/')
       .then(res => {
         this.setState({ listings: res.data })
       })
@@ -56,7 +56,7 @@ class ViewListing extends Component {
         console.log(err) 
       })
 
-    axios.get('http://localhost:5000/listings/' + this.props.match.params.id)
+    axios.get('https://thriftrents.herokuapp.com/listings/' + this.props.match.params.id)
       .then(res => {
           this.setState(prevState => ({
             isLoading: false,
@@ -77,7 +77,7 @@ class ViewListing extends Component {
   }
 
   deleteExercise() {
-    axios.delete('http://localhost:5000/listings/' + this.props.match.params.id)
+    axios.delete('https://thriftrents.herokuapp.com/listings/' + this.props.match.params.id)
       .then(res => {
         this.setState({
           listings: this.state.listings.filter(el => el._id !== this.props.match.params.id)
