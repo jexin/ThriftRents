@@ -210,7 +210,7 @@ class ViewListing extends Component {
               </Grid>
             </Col>
             <Col md={4}>
-              <ReactMapGL mapStyle='mapbox://styles/mapbox/streets-v11' mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+              <ReactMapGL mapStyle='mapbox://styles/mapbox/streets-v11' mapboxApiAccessToken={process.env.MAPBOX_TOKEN}
                 {...this.state.viewport}
                 onViewportChange={(viewport) => this.setState({viewport})}>
                   {this.state.listing.location && (
