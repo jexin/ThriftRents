@@ -1,11 +1,13 @@
 const express = require('express') // web framework for node.js
 const cors = require('cors') // access outside server from server
+const path = require("path") // path to client
 require('dotenv').config() // load environment variables
 const app = express(); // create server
 const port = process.env.PORT || 5000; // server port
 // middleware
 app.use(cors()) 
 app.use(express.json())
+app.use(express.static(path.join(__dirname, "./client/build")))
 
 // routes
 const listingsRouter = require('./routes/listings')
@@ -19,5 +21,9 @@ const connection = mongoose.connection
 connection.once('open', () => {
   console.log("Database connected")
 })
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "./client/build/index.html"))
+});
 
 app.listen(port, () => console.log(`Listening on port ${port}`)) // check server is up and running
