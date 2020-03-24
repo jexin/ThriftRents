@@ -5,7 +5,7 @@ footer {
 
 .footer {
     height: 40px;
-    margin: 0 auto;
+    margin: 10px auto 0 auto;
     text-align: center;
     background-color: rgb(245, 245, 245);
     color: rgb(145, 145, 145);
