@@ -348,14 +348,14 @@ class ListingForm extends Component {
         axios.post('https://thriftrents.herokuapp.com/listings/add', data)
         .then(res => {
             console.log(res.data)
-            window.location = '/';
+            window.location.href = '/';
         })
         .catch((err) => console.log(err))
     } else {
         axios.post('https://thriftrents.herokuapp.com/listings/update/' + this.props.match.params.id, data)
         .then(res => {
             console.log(res.data)
-            window.location = '/details/'+ this.props.match.params.id;
+            window.location.href = '/details/'+ this.props.match.params.id;
         })
         .catch((err) => console.log(err))
     }
