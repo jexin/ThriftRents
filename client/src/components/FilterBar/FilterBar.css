@@ -1,0 +1,21 @@
+.filter-bar {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.css-2b097c-container {
+    margin: 10px 10px 5px 15px;
+}
+
+#type-select {
+    width: 400px;
+}
+
+#gender-select {
+    width: 150px;
+}
+
+#budget-input {
+    width: 150px;
+}
+

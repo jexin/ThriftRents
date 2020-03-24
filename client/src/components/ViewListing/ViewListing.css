@@ -1,0 +1,79 @@
+.passed-time {
+    font-size: .8em;
+}
+
+.modal-body {
+    text-align: center;
+}
+
+.modal-body .figure-img {
+    width: 49px;
+    height: 49px;
+    margin: 0 3px;
+}
+
+.modal-body svg {
+    font-size: 3.5em;
+    margin: 3px;
+}
+
+.svg-inline--fa {
+    vertical-align: middle;
+}
+
+#loading {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#spinner {
+    font-size: 3em;
+}
+
+#facebook {
+    color: #4267B2;
+}
+
+#twitter {
+    color: #1DA1F2;
+}
+
+#reddit {
+    color: #FF4500;
+}
+
+#phone {
+    padding: 5px;
+    color: #424242;
+}
+
+#email {
+    padding: 5px;
+    color: #222222;
+}
+
+.marker {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: #FF4500;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+	animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+	0% {
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+	}
+
+	70% {
+		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
+}

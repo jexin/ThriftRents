@@ -1,0 +1,92 @@
+#home {
+    margin: 0;
+}
+
+.dropdown {
+    display: inline-block;
+    margin: 10px 5px 0 15px;
+}
+
+@media (min-width: 0px) {
+    .card-deck .card {
+        margin: 10px 0;
+        color: inherit;
+    }
+}
+
+.link :hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.body {
+    font-size: 90%;
+    padding: 8px 8px;
+}
+
+.card-title {
+    font-size: 112%;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+#type {
+    font-weight: normal;
+    font-size: 75%;
+    color: rgb(100, 100, 100);
+}
+
+.mapboxgl-marker:hover, .hover {
+    z-index: 10;
+}
+
+.marker-content, #popover {
+    color: initial;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 1em;
+    border: 2px solid rgb(200, 200, 200);
+    transform: translate(-50%, 0); 
+    background-color: white;
+    padding: 5px;
+    cursor: pointer
+}
+
+.marker-content {
+    position: absolute;
+    display: inline-block;
+}
+
+.marker-content:hover, .hovered {
+    transform: translate(-50%, 0) scale(1.2);
+}
+
+#popover {
+    position: absolute;
+    width: 200px;
+    transform: translate(-50%, -100%); 
+    overflow-wrap: break-word;
+    text-align: center;
+    display: none;
+}
+
+.mapboxgl-marker:hover #popover {
+    display: inline-block;
+}
+
+#map {
+    margin-top: 10px;
+    padding: 0;
+}
+
+#map-box {
+    position: sticky;
+    top: 0px;
+}
+
+#map-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
