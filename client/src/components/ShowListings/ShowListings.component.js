@@ -130,7 +130,7 @@ class ShowListings extends Component {
           </Col>
           <Col lg={6} className="d-none d-lg-block" id="map">
             <div id="map-box">
-              <ReactMapGL mapStyle='mapbox://styles/mapbox/streets-v11' mapboxApiAccessToken={process.env.MAPBOX_TOKEN}
+              <ReactMapGL mapStyle='mapbox://styles/mapbox/streets-v11' mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
                 {...this.state.viewport}
                 onViewportChange={(viewport) => this.setState({viewport})}>
                   { this.mapListings() }
