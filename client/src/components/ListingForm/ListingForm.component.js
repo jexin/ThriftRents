@@ -295,6 +295,8 @@ class ListingForm extends Component {
     var contact = this.state.contact;
     contact.email = e.target.value;
     this.setState({ contact: contact, noContact: false});
+    console.log(this.state.startDate)
+    console.log(this.state.endDate)
   }
 
   onSubmit(e) {
@@ -449,7 +451,7 @@ class ListingForm extends Component {
               <Form.Group as={Row} controlId="formHorizontalImages">
                 <Form.Label column >Images (up to 5)</Form.Label>
                 <Col sm={10}>
-                  <input type="file" id="files" accept="image/png, image/jpeg" multiple onChange={this.onChangeImages} className="hidden"/>
+                  <input type="file" id="files" accept="image/png, image/jpeg" multiple onChange={this.onChangeImages} className="d-none"/>
                   {!this.props.edit ? (
                     <Button as="label" htmlFor="files" variant="info" id="fileInput">Upload files <Badge variant="light">{this.state.images.length}</Badge></Button>
                   ) : (
@@ -683,7 +685,7 @@ class ListingForm extends Component {
                   onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} 
                   focusedInput={this.state.focusedInput} 
                   onFocusChange={focusedInput => this.setState({ focusedInput })} 
-                  readOnly
+                  // readOnly
                   />
                 </Col>
               </Form.Group>
@@ -885,7 +887,7 @@ class ListingForm extends Component {
                 <Button variant="primary" type="submit">Submit</Button>
               ) : (
                 <>
-                <Button className="mr-1 mb-1" variant="primary" type="submit">Save Changes</Button>
+                <Button className="mr-2 mb-1 ml-auto" variant="primary" type="submit">Save Changes</Button>
                 <Button as={Link} to={'/details/'+this.props.match.params.id} variant="light">Cancel</Button>
                 </>
               )}
