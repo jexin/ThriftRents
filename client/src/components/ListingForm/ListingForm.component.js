@@ -20,8 +20,6 @@ class ListingForm extends Component {
 
     this.state = {
       isLoading: true,
-      created: false,
-      edited: false,
       title: '',
       address: '',
       images: [],
@@ -350,7 +348,6 @@ class ListingForm extends Component {
         axios.post('https://thriftrents.herokuapp.com/listings/add', data)
         .then(res => {
             console.log(res.data)
-            this.setState({ created: true })
             window.location.href = '/';
         })
         .catch((err) => console.log(err))
@@ -358,7 +355,6 @@ class ListingForm extends Component {
         axios.post('https://thriftrents.herokuapp.com/listings/update/' + this.props.match.params.id, data)
         .then(res => {
             console.log(res.data)
-            this.setState({ edited: true })
             window.location.href = '/details/'+ this.props.match.params.id;
         })
         .catch((err) => console.log(err))
