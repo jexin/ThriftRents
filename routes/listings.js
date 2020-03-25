@@ -87,6 +87,7 @@ router.route('/update/:id').post(upload.any(), (req, res) => {
     req.files.forEach(file => images.push(file.buffer))
     const json = req.body.listing;
     const obj = JSON.parse(json);
+    
     Listing.findById(req.params.id)
         .then(listing => {
             listing.title = obj.title
@@ -101,8 +102,8 @@ router.route('/update/:id').post(upload.any(), (req, res) => {
             listing.gender = obj.gender
             listing.term = obj.term
             listing.length = obj.length
-            listing.start = Date(obj.start)
-            listing.end = Date(obj.end)
+            listing.start = obj.start
+            listing.end = obj.end
             listing.included = obj.included
             listing.rows = obj.rows
             listing.contact= obj.contact

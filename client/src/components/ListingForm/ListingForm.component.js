@@ -32,6 +32,8 @@ class ListingForm extends Component {
       term: [],
       lengthAmount: '',
       lengthUnit: 'months',
+      startDate: '',
+      endDate: '',
       included: [],
       columns: [
         { name: "room", title: "Room" },
@@ -88,6 +90,7 @@ class ListingForm extends Component {
           listing.rows.map((row,i) => {
             row.id = i
           })
+
           this.setState({
             isLoading: false,
             title: listing.title,
@@ -314,7 +317,7 @@ class ListingForm extends Component {
       )
       .catch(error => this.setState({ 
         badAddress: true 
-      }));
+      }))
     }
   }
 
@@ -355,7 +358,7 @@ class ListingForm extends Component {
         })
         .catch((err) => console.log(err))
     } else {
-        axios.post('https://thriftrents.herokuapp.com/listings/update/' + this.props.match.params.id, data)
+        axios.post('http://localhost:5000/listings/update/' + this.props.match.params.id, data)
         .then(res => {
             console.log(res.data)
             window.location.href = '/details/'+ this.props.match.params.id;
@@ -659,30 +662,31 @@ class ListingForm extends Component {
                 <Form.Label as="legend" column sm={2}>Lease Length</Form.Label>
                 <Col sm={10}>
                   <InputGroup>
-                    <FormControl placeholder="Amount" value={this.state.lengthAmount} onChange={this.onChangeLengthAmount} required/>
-                    <InputGroup.Append>
-                        <Form.Group controlId="formGridUnit">
-                            <Form.Control as="select" value={this.state.lengthUnit} onChange={this.onChangeLengthUnit} required>
-                                <option value="months">months</option>
-                                <option value="weeks">weeks</option>
-                                <option value="days">days</option>
-                            </Form.Control>
-                        </Form.Group>
-                    </InputGroup.Append>
-                  </InputGroup>
-                </Col>
-              </Form.Group>
+                     <FormControl placeholder="Amount" value={this.state.lengthAmount} onChange={this.onChangeLengthAmount} required/>
+                     <InputGroup.Append>
+                         <Form.Group controlId="formGridUnit">
+                             <Form.Control as="select" value={this.state.lengthUnit} onChange={this.onChangeLengthUnit} required>
+                                 <option value="months">months</option>
+                                 <option value="weeks">weeks</option>
+                                 <option value="days">days</option>
+                             </Form.Control>
+                         </Form.Group>
+                     </InputGroup.Append>
+                   </InputGroup>
+                 </Col>
+               </Form.Group>
 
-              <Form.Group as={Row} controlId="formHorizontalBath">
-                <Form.Label column sm={2}>Start-End Date</Form.Label>
-                <Col sm={10}>
+               <Form.Group as={Row} controlId="formHorizontalBath">
+                 <Form.Label column sm={2}>Start-End Date</Form.Label>
+                 <Col sm={10}>
                   <DateRangePicker
                   required
                   startDate={this.state.startDate} 
                   startDateId="startDateId" 
                   endDate={this.state.endDate}
                   endDateId="endDateId"
-                  onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} 
+                  onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate })
+                  }}
                   focusedInput={this.state.focusedInput} 
                   onFocusChange={focusedInput => this.setState({ focusedInput })} 
                   readOnly
@@ -890,7 +894,7 @@ class ListingForm extends Component {
                 </>
               )}
             </Form>
-        </Container>
+        </Container> 
         )
       )
   }
