@@ -7,7 +7,7 @@ import moment from 'moment';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
-import { EditingState, SortingState, IntegratedSorting } from '@devexpress/dx-react-grid';
+import { EditingState } from '@devexpress/dx-react-grid';
 import { Grid, Table, TableHeaderRow, TableEditColumn, TableInlineCellEditing } from '@devexpress/dx-react-grid-bootstrap4'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-dates/lib/css/_datepicker.css';
@@ -34,7 +34,7 @@ class ListingForm extends Component {
       lengthUnit: 'months',
       included: [],
       columns: [
-        { name: "room", title: "Room #" },
+        { name: "room", title: "Room" },
         { name: "name", title: "Name" },
         { name: "tags", title: "Tags" }
       ],
@@ -85,6 +85,9 @@ class ListingForm extends Component {
           for (var i = 0; i < listing.images.length; i++) {
             images.push(new File([Buffer.from(listing.images[i].data)], "Image" + i,{type: "image/png"}))
           }
+          listing.rows.map((row,i) => {
+            row.id = i
+          })
           this.setState({
             isLoading: false,
             title: listing.title,
@@ -295,8 +298,6 @@ class ListingForm extends Component {
     var contact = this.state.contact;
     contact.email = e.target.value;
     this.setState({ contact: contact, noContact: false});
-    console.log(this.state.startDate)
-    console.log(this.state.endDate)
   }
 
   onSubmit(e) {
@@ -374,7 +375,6 @@ class ListingForm extends Component {
       const FocusableCell = ({ onClick, ...restProps }) => (
         <Table.Cell {...restProps} tabIndex={0} onFocus={onClick} />
       );      
-      const sorting = [{ columnName: 'room', direction: 'asc' }];
       const CommandButton = ({
         onExecute, icon, text, hint, color,
       }) => (
@@ -402,7 +402,7 @@ class ListingForm extends Component {
           icon="trash"
           hint="Delete row"
           color="text-danger"
-          onExecute={() => { onExecute() }}
+          onExecute={onExecute}
         />
       );
       const commandComponents = {
@@ -776,8 +776,6 @@ class ListingForm extends Component {
                       addedRows={[]}
                       onAddedRowsChange={this.addEmptyRow}
                     />
-                    <SortingState sorting={sorting} />
-                    <IntegratedSorting />
                     <Table cellComponent={FocusableCell} columnExtensions={tableColumnExtensions} />
                     <TableHeaderRow />
                     <TableInlineCellEditing selectTextOnEditStart />

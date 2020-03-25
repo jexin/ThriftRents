@@ -27,7 +27,7 @@ const listingSchema = new mongoose.Schema({
     end: {type: Date, required: true},
     included: {type: [String]},
     rows: [{
-        room: { type: Number },
+        room: { type: String },
         name: { type: String },
         tags: { type: String }
     }],
