@@ -358,7 +358,7 @@ class ListingForm extends Component {
         })
         .catch((err) => console.log(err))
     } else {
-        axios.post('http://localhost:5000/listings/update/' + this.props.match.params.id, data)
+        axios.post('https://thriftrents.herokuapp.com/listings/update/' + this.props.match.params.id, data)
         .then(res => {
             console.log(res.data)
             window.location.href = '/details/'+ this.props.match.params.id;
