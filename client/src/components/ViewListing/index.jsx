@@ -77,7 +77,7 @@ class ViewListing extends React.Component {
         this.props.changeOwner(res.data.userId)
       })
       .catch((err) => { 
-        window.location = '/'
+        console.log(err)
       })
   }
 
