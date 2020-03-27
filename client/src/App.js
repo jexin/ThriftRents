@@ -1,22 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-import Navbar from './components/NavBar/NavBar.component';
-import ShowListings from './components/ShowListings/ShowListings.component';
-import ViewListing from './components/ViewListing/ViewListing.component';
-import ListingForm from './components/ListingForm/ListingForm.component';
-import MyListings from './components/MyListings/MyListings.component';
-import Footer from './components/Footer/Footer.component';
+import Navbar from './components/NavBar';
+import ShowListings from './components/ShowListings';
+import ViewListing from './components/ViewListing';
+import ListingForm from './components/ListingForm';
+import MyListings from './components/MyListings';
+import Footer from './components/Footer';
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { 
-      user: ''
-    }
+    this.state = { user: '' }
   }
 
   responseGoogle = (response) => {

@@ -1,66 +1,66 @@
 .passed-time {
-    font-size: .8em;
+  font-size: .8em;
 }
 
 .modal-body {
-    text-align: center;
+  text-align: center;
 }
 
 .modal-body .figure-img {
-    width: 49px;
-    height: 49px;
-    margin: 0 3px;
+  width: 49px;
+  height: 49px;
+  margin: 0 3px;
 }
 
 .modal-body svg {
-    font-size: 3.5em;
-    margin: 3px;
+  font-size: 3.5em;
+  margin: 3px;
 }
 
 .svg-inline--fa {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
-#loading {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.loading {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #spinner {
-    font-size: 3em;
+  font-size: 3em;
 }
 
 #facebook {
-    color: #4267B2;
+  color: #4267B2;
 }
 
 #twitter {
-    color: #1DA1F2;
+  color: #1DA1F2;
 }
 
 #reddit {
-    color: #FF4500;
+  color: #FF4500;
 }
 
 #phone {
-    padding: 5px;
-    color: #424242;
+  padding: 5px;
+  color: #424242;
 }
 
 #email {
-    padding: 5px;
-    color: #222222;
+  padding: 5px;
+  color: #222222;
 }
 
 .marker {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    border: 2px solid white;
-    background-color: #FF4500;
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background-color: #FF4500;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
 	animation: pulse 2s infinite;
 }
 
