@@ -62,18 +62,19 @@ class ViewListing extends React.Component {
 
     axios.get(`https://thriftrents.herokuapp.com/listings/${this.props.match.params.id}`)
       .then(res => {
-          this.setState(prevState => ({
-            isLoading: false,
-            listing: res.data,
-            images: res.data.images,
-            contact: res.data.contact,
-            rows: res.data.rows,
-            viewport: {                   
-              ...prevState.viewport,    
-              latitude: res.data.location.coordinates[0],
-              longitude: res.data.location.coordinates[1]    
-            }
+        this.setState(prevState => ({
+          isLoading: false,
+          listing: res.data,
+          images: res.data.images,
+          contact: res.data.contact,
+          rows: res.data.rows,
+          viewport: {                   
+            ...prevState.viewport,    
+            latitude: res.data.location.coordinates[0],
+            longitude: res.data.location.coordinates[1]    
+          }
         }))
+        this.props.changeOwner(res.data.userId)
       })
       .catch((err) => { 
         console.log(err) 

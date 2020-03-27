@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -14,19 +14,48 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { user: '' }
+    this.state = { 
+      user: '',
+      owner: '' 
+    }
+
+    this.responseGoogle = this.responseGoogle.bind(this);
+    this.logout = this.logout.bind(this);
+    this.changeOwner = this.changeOwner.bind(this);
+    this.PrivateRoute = this.PrivateRoute.bind(this);
   }
 
-  responseGoogle = (response) => {
+  responseGoogle(response) {
     this.setState({
       user: response.profileObj
     })
   }
 
-  logout = () => {
+  logout() {
     this.setState({
       user: ''
     })
+  }
+
+  changeOwner(googleId) {
+    this.setState({
+      owner: googleId
+    })
+  }
+  
+  PrivateRoute({ component: Component, ...rest }) {
+    return (
+      <Route
+        {...rest}
+        render={(props) =>
+          this.state.user.googleId === this.state.owner ? (
+            <Component {...props} edit={true} user={this.state.user} />
+          ) : (
+            <Redirect to={`/details/${props.match.params.id}`} />
+          )
+        }
+      />
+    );
   }
 
   render() {
@@ -34,11 +63,11 @@ class App extends React.Component {
       <div>
         <Router>
           <Navbar responseGoogle={this.responseGoogle} logout={this.logout} user={this.state.user} />
-          <Route path="/" exact component={ShowListings} />
-          <Route path="/details/:id" render={(props) => <ViewListing {...props} user={this.state.user} />} />
-          <Route path="/edit/:id" render={(props) => <ListingForm {...props} edit={true} user={this.state.user} />} />
-          <Route path="/create" render={(props) => <ListingForm {...props} edit={false} user={this.state.user} />} />
-          <Route path="/my-listings" render={(props) => <MyListings {...props} user={this.state.user} />} />
+          <Route path='/' exact component={ShowListings} />
+          <Route path='/details/:id' render={(props) => <ViewListing {...props} user={this.state.user} changeOwner={this.changeOwner} />} />
+          <this.PrivateRoute path='/edit/:id' component={ListingForm} />
+          <Route path='/create' render={(props) => <ListingForm {...props} edit={false} user={this.state.user} />} />
+          <Route path='/my-listings' render={(props) => <MyListings {...props} user={this.state.user} />} />
           <Footer />
         </Router>
       </div>
