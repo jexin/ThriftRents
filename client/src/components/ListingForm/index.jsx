@@ -410,7 +410,7 @@ class ListingForm extends React.Component {
       included: this.state.included,
       rows: this.state.rows,
       contact: this.state.contact,
-      userId: this.props.user.googleId
+      userId: this.props.user.googleId || ''
     }
 
     Array.from(this.state.images).forEach(image => {
