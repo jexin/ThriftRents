@@ -8,3 +8,17 @@ Find your next home on ThriftRents.
 
 Choose how you want to be contacted.
 No login required.
+
+Features:
+- Form validation
+- Mapbox api
+- Image handling
+- Filter
+- Authentication
+- Protected routes on frontend AND backend
+- Editable grid
+- React router
+- React dates
+- Responsive
+- Loading page
+- Followed Airbnb react style guide
