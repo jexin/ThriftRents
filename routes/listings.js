@@ -122,10 +122,10 @@ router.route('/update/:id').post(upload.any(), (req, res) => {
 
 // D
 router.route('/:id').delete((req, res, next) => {
-  if (req.body.user !== req.body.owner) {
+  if (!req.body.user) {
     res.status(400).json(`Error: ${err}`)
   } else {
-    res.status(400).json(`${req.body.user} ${req.body.owner}`)
+    next()
   }
 }, (req, res) => {
   Listing.findByIdAndDelete(req.params.id)
