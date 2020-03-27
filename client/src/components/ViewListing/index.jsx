@@ -84,7 +84,7 @@ class ViewListing extends React.Component {
   deleteExercise() {
     let data = {
       user: this.state.listing.userId,
-      owner: this.props.user.googleId || 'anon'
+      owner: this.props.user.googleId || ''
     }
     
     axios.delete(`https://thriftrents.herokuapp.com/listings/${this.props.match.params.id}`, { data: data })

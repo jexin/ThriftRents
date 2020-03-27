@@ -367,17 +367,18 @@ class ListingForm extends React.Component {
         emptyImage: true 
       })
     } else if (
-      this.state.contact.instagram === '' && 
-      this.state.contact.facebook === '' && 
-      this.state.contact.twitter === '' && 
-      this.state.contact.reddit === '' && 
-      this.state.contact.snapchat === '' && 
-      this.state.contact.wechat === '' && 
-      this.state.contact.phone === '' &&
-      this.state.contact.email === '') {
-        this.setState({ 
-          noContact: true 
-        })
+      this.state.contact.instagram === '' 
+      && this.state.contact.facebook === '' 
+      && this.state.contact.twitter === '' 
+      && this.state.contact.reddit === '' 
+      && this.state.contact.snapchat === '' 
+      && this.state.contact.wechat === '' 
+      && this.state.contact.phone === '' 
+      && this.state.contact.email === ''
+    ) {
+      this.setState({ 
+        noContact: true 
+      })
     } else {
       axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${this.state.address}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}&limit=1`)
         .then(res => this.submitListing(res.data.features[0].center))
@@ -410,7 +411,7 @@ class ListingForm extends React.Component {
       included: this.state.included,
       rows: this.state.rows,
       contact: this.state.contact,
-      userId: this.props.user.googleId || 'anon'
+      userId: this.props.user.googleId || ''
     }
 
     Array.from(this.state.images).forEach(image => {
