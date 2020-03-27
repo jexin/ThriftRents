@@ -11,9 +11,9 @@ No login required.
 
 Features:
 - Form validation
-- Mapbox api
+- Mapbox API
 - Image handling
-- Filter
+- Filters
 - Authentication
 - Protected routes on frontend AND backend
 - Editable grid
