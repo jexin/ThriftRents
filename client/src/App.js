@@ -15,8 +15,8 @@ class App extends React.Component {
     super(props);
 
     this.state = { 
-      user: ' ',
-      owner: ' ' 
+      user: 'anon',
+      owner: 'anon' 
     }
 
     this.responseGoogle = this.responseGoogle.bind(this);
@@ -33,7 +33,7 @@ class App extends React.Component {
 
   logout() {
     this.setState({
-      user: ''
+      user: 'anon'
     })
   }
 
