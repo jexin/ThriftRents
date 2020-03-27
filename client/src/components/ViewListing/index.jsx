@@ -180,7 +180,7 @@ class ViewListing extends React.Component {
         <Container>
           <Row className="mt-3">
             <Col md={7}>
-              <Carousel>
+              <Carousel className="mb-2">
                 {this.loadImages()}
               </Carousel>
             </Col>

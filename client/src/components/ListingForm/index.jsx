@@ -438,9 +438,9 @@ class ListingForm extends React.Component {
 
   render() {
     const tableColumnExtensions = [
-      { columnName: 'room', width: '15%' },
+      { columnName: 'room', width: '20%' },
       { columnName: 'name', width: '20%' },
-      { columnName: 'tags', width: '65%' }
+      { columnName: 'tags', width: '60%' }
     ];
     const getRowId = row => row.id;
     const FocusableCell = ({ onClick, ...restProps }) => (

@@ -28,7 +28,7 @@ function NavBar(props) {
             clientId="542275019926-pte2khv5ugm3uqoinn3qq30an9k1esq8.apps.googleusercontent.com"
             buttonText="Login"
             onSuccess={props.responseGoogle}
-            onFailure={props.responseGoogle}
+            onFailure={props.logout}
             isSignedIn
             cookiePolicy={'single_host_origin'}
           />
