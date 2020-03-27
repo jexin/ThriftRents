@@ -15,8 +15,8 @@ class App extends React.Component {
     super(props);
 
     this.state = { 
-      user: '',
-      owner: '' 
+      user: ' ',
+      owner: ' ' 
     }
 
     this.responseGoogle = this.responseGoogle.bind(this);
