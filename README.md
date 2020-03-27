@@ -21,4 +21,4 @@ Features:
 - React dates
 - Responsive
 - Loading page
-- Followed Airbnb react style guide
+- Follows Airbnb react style guide
