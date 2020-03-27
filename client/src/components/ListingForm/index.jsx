@@ -82,36 +82,35 @@ class ListingForm extends React.Component {
 
   componentDidMount() {
     if (this.props.edit) {
-      axios.get('https://thriftrents.herokuapp.com/listings/')
+      axios.get(`https://thriftrents.herokuapp.com/listings/${this.props.match.params.id}`)
         .then(res => {
-          let listing = res.data.find(el => el._id === this.props.match.params.id);
           let images = [];
-          for (var i = 0; i < listing.images.length; i++) {
-            images.push(new File([Buffer.from(listing.images[i].data)], 'Image' + i,{ type: "image/png" }));
+          for (var i = 0; i < res.data.images.length; i++) {
+            images.push(new File([Buffer.from(res.data.images[i].data)], 'Image' + i,{ type: "image/png" }));
           }
-          listing.rows.map((row, i) => {
+          res.data.rows.map((row, i) => {
             row.id = i;
           })
 
           this.setState({
             isLoading: false,
-            title: listing.title,
-            address: listing.address,
+            title: res.data.title,
+            address: res.data.address,
             images: images,
-            description: listing.description,
-            price: listing.price,
-            type: listing.type,
-            bed: listing.bed,
-            bath: listing.bath,
-            gender: listing.gender,
-            term: listing.term,
-            lengthAmount: listing.length.replace(/\D/g, ""),
-            lengthUnit: listing.length.replace(/\d+\s*/g, ""),
-            startDate: moment(listing.start),
-            endDate: moment(listing.end),
-            included: listing.included,
-            rows: listing.rows,
-            contact: listing.contact
+            description: res.data.description,
+            price: res.data.price,
+            type: res.data.type,
+            bed: res.data.bed,
+            bath: res.data.bath,
+            gender: res.data.gender,
+            term: res.data.term,
+            lengthAmount: res.data.length.replace(/\D/g, ""),
+            lengthUnit: res.data.length.replace(/\d+\s*/g, ""),
+            startDate: moment(res.data.start),
+            endDate: moment(res.data.end),
+            included: res.data.included,
+            rows: res.data.rows,
+            contact: res.data.contact
           })
         })
         .catch((err) => { 
@@ -438,10 +437,10 @@ class ListingForm extends React.Component {
 
   render() {
     const tableColumnExtensions = [
-      { columnName: 'room', width: '20%' },
-      { columnName: 'name', width: '20%' },
-      { columnName: 'tags', width: '60%' }
-    ];
+      { columnName: 'room', width: '120' },
+      { columnName: 'name', width: '180' },
+      { columnName: 'tags', width: '360' }
+    ]
     const getRowId = row => row.id;
     const FocusableCell = ({ onClick, ...restProps }) => (
       <Table.Cell {...restProps} tabIndex={0} onFocus={onClick} />

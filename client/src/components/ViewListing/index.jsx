@@ -38,7 +38,7 @@ class ViewListing extends React.Component {
       rows: [],
       viewport: {
         width: '100%',
-        height: '100%',
+        height: 350,
         latitude: 32.8698846,
         longitude: -117.23511310000004,
         zoom: 14
@@ -57,7 +57,7 @@ class ViewListing extends React.Component {
         })
       })
       .catch((err) => { 
-        console.log(err) 
+        console.log(err)
       })
 
     axios.get(`https://thriftrents.herokuapp.com/listings/${this.props.match.params.id}`)
@@ -77,7 +77,7 @@ class ViewListing extends React.Component {
         this.props.changeOwner(res.data.userId)
       })
       .catch((err) => { 
-        console.log(err) 
+        window.location = '/'
       })
   }
 
@@ -162,9 +162,9 @@ class ViewListing extends React.Component {
     );
 
     const tableColumnExtensions = [
-      { columnName: 'room', width: '20%' },
-      { columnName: 'name', width: '20%' },
-      { columnName: 'tags', width: '60%' }
+      { columnName: 'room', width: '120' },
+      { columnName: 'name', width: '180' },
+      { columnName: 'tags', width: '360' }
     ];
 
     const sorting = [{ columnName: 'room', direction: 'asc' }];
