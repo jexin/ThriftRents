@@ -125,7 +125,7 @@ router.route('/:id').delete((req, res, next) => {
   if (req.body.user !== req.body.owner) {
     res.status(400).json(`Error: ${err}`)
   } else {
-    next();
+    res.status(400).json(`${req.body.user} ${req.body.owner}`)
   }
 }, (req, res) => {
   Listing.findByIdAndDelete(req.params.id)
