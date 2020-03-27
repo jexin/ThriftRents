@@ -123,7 +123,8 @@ router.route('/update/:id').post(upload.any(), (req, res) => {
 // D
 router.route('/:id').delete((req, res, next) => {
   if (!req.body.user || !req.body.owner || req.body.user !== req.body.owner) {
-    res.sendStatus(400)
+    res.status(400).json(`user:${req.body.user}owner:${req.body.owner}`)
+    // res.sendStatus(400)
   } else {
     next()
   }
