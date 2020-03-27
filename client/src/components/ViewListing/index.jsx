@@ -87,7 +87,7 @@ class ViewListing extends React.Component {
       owner: this.props.user.googleId
     }
     
-    axios.delete(`https://thriftrents.herokuapp.com/listings/${this.props.match.params.id}`, data)
+    axios.delete(`https://thriftrents.herokuapp.com/listings/${this.props.match.params.id}`, { data: data })
       .then(res => {
         this.setState({
           listings: this.state.listings.filter(el => el._id !== this.props.match.params.id)
