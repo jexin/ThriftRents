@@ -86,7 +86,7 @@ router.route('/:id').get((req, res) => {
 })
 
 // U
-router.route('/update/:id').put(upload.array('file'), (req, res) => {
+router.route('/update/:id').post(upload.array('file'), (req, res) => {
   let images = [];
   req.files.forEach(file => images.push(file.buffer));
   const json = req.body.listing;
