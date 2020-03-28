@@ -769,7 +769,7 @@ class ListingForm extends React.Component {
                           onChange={this.onChangeLengthUnit} 
                           required
                         >
-                          <option value="months">months</option>
+                          <option value="months">month(s)</option>
                           <option value="weeks">weeks</option>
                           <option value="days">days</option>
                         </Form.Control>
@@ -790,8 +790,8 @@ class ListingForm extends React.Component {
                   onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate })}}
                   focusedInput={this.state.focusedInput} 
                   onFocusChange={focusedInput => this.setState({ focusedInput })} 
-                  readOnly
                   required
+                  readOnly
                 />
               </Col>
             </Form.Group>
