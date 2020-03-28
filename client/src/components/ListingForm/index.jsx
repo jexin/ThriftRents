@@ -771,8 +771,8 @@ class ListingForm extends React.Component {
                           required
                         >
                           <option value="month(s)">month(s)</option>
-                          <option value="weeks">weeks</option>
-                          <option value="days">days</option>
+                          <option value="week(s)">week(s)</option>
+                          <option value="day(s)">day(s)</option>
                         </Form.Control>
                     </Form.Group>
                   </InputGroup.Append>
