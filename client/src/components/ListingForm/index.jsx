@@ -135,11 +135,8 @@ class ListingForm extends React.Component {
   }
 
   onChangeImages(e) {
-    this.setState({ 
-      images: e.target.files 
-    })
-
     this.setState({
+      images: e.target.files, 
       tooMany: false,
       tooLarge: false,
       emptyImage: false
@@ -377,6 +374,10 @@ class ListingForm extends React.Component {
       this.setState({ 
         noContact: true 
       })
+    } else if (!this.state.startDate || !this.state.endDate) {
+      this.setState({
+        noDates: true
+      })
     } else {
       axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${this.state.address}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}&limit=1`)
         .then(res => this.submitListing(res.data.features[0].center))
@@ -526,7 +527,7 @@ class ListingForm extends React.Component {
             </Form.Group>
 
             <Form.Group as={Row} controlId="formHorizontalImages">
-              <Form.Label column >Images (up to 5)</Form.Label>
+              <Form.Label column sm={2}>Images (up to 5)</Form.Label>
               <Col sm={10}>
                 <input 
                   type="file"
@@ -787,12 +788,22 @@ class ListingForm extends React.Component {
                   startDateId="startDateId" 
                   endDate={this.state.endDate}
                   endDateId="endDateId"
-                  onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate })}}
+                  onDatesChange={({ startDate, endDate }) => { 
+                    this.setState({ 
+                      startDate, endDate, 
+                      noDates: false 
+                    })
+                  }}
                   focusedInput={this.state.focusedInput} 
                   onFocusChange={focusedInput => this.setState({ focusedInput })} 
                   required
                   readOnly
                 />
+                {this.state.noDates && (
+                  <Alert variant="danger">
+                    Please select dates.
+                  </Alert>
+                )}
               </Col>
             </Form.Group>
 
