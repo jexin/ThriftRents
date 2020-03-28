@@ -48,7 +48,7 @@ class App extends React.Component {
       <Route
         {...rest}
         render={(props) =>
-          this.state.user.googleId === this.state.owner ? (
+          (this.state.user.googleId === this.state.owner || this.state.user === this.state.owner) ? (
             <Component {...props} edit={true} user={this.state.user} />
           ) : (
             <Redirect to={`/details/${props.match.params.id}`} />

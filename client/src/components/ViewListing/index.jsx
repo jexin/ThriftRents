@@ -197,10 +197,10 @@ class ViewListing extends React.Component {
               <p>${listing.price} / month</p>
               <p> {listing.type}</p>
               <p>{listing.bed} bed | {listing.bath} bath</p>
-              <p><b>Lease term</b>: {listing.term && listing.term.join(', ')}</p>
+              <p><b>Lease terms</b>: {listing.term && listing.term.join(', ')}</p>
               <p><b>Lease tength</b>: {listing.length}</p>
               <p><b>Start-End dates</b>: {moment(listing.start).format('L')} - {moment(listing.end).format('L')}</p>
-              {(listing.userId === '' || listing.userId === this.props.user.googleId) && (
+              {(listing.userId === this.props.user || listing.userId === this.props.user.googleId) && (
                 <>
                   <Button as={NavLink} to={`/edit/${listing._id}`} variant="warning" className="mr-2">Edit</Button>
                   <Button onClick={() => this.deleteExercise()} variant="danger">Delete</Button>

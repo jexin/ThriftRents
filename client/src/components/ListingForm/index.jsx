@@ -779,11 +779,10 @@ class ListingForm extends React.Component {
               </Col>
             </Form.Group>
 
-            <Form.Group as={Row} controlId="formHorizontalBath">
-              <Form.Label column sm={2}>Start-End Date</Form.Label>
+            <Form.Group as={Row} controlId="formHorizontalDates">
+              <Form.Label as="legend" column sm={2}>Start-End Date</Form.Label>
               <Col sm={10}>
                 <DateRangePicker
-                  required
                   startDate={this.state.startDate} 
                   startDateId="startDateId" 
                   endDate={this.state.endDate}
@@ -792,6 +791,7 @@ class ListingForm extends React.Component {
                   focusedInput={this.state.focusedInput} 
                   onFocusChange={focusedInput => this.setState({ focusedInput })} 
                   readOnly
+                  required
                 />
               </Col>
             </Form.Group>
