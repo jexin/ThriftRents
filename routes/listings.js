@@ -5,16 +5,16 @@ const multer = require('multer');
 // make sure file is of type image
 function fileFilter(req, file, cb) {
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-      cb(null, true);
+    cb(null, true);
   } else {
-      cb(null, false);
+    cb(null, false);
   }
 }
 
 // set upload limit
 const upload = multer({
   limits: {
-      fileSize: 1000*1000,
+      fileSize: 1024 * 1024,
       files: 5
   },
 
@@ -86,7 +86,7 @@ router.route('/:id').get((req, res) => {
 })
 
 // U
-router.route('/update/:id').post(upload.any(), (req, res) => {
+router.route('/update/:id').put(upload.array('file'), (req, res) => {
   let images = [];
   req.files.forEach(file => images.push(file.buffer));
   const json = req.body.listing;
