@@ -33,7 +33,7 @@ class ListingForm extends React.Component {
       gender: '',
       term: [],
       lengthAmount: '',
-      lengthUnit: 'months',
+      lengthUnit: 'month(s)',
       included: [],
       columns: [
         { name: 'room', title: 'Room' },
@@ -770,7 +770,7 @@ class ListingForm extends React.Component {
                           onChange={this.onChangeLengthUnit} 
                           required
                         >
-                          <option value="months">month(s)</option>
+                          <option value="month(s)">month(s)</option>
                           <option value="weeks">weeks</option>
                           <option value="days">days</option>
                         </Form.Control>
