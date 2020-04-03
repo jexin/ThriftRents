@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { Container, Figure, Modal, Button, Image, Popover, OverlayTrigger, Carousel, Col, Row } from 'react-bootstrap';
 import axios from 'axios';
 import moment from 'moment';
@@ -93,7 +93,7 @@ class ViewListing extends React.Component {
           listings: this.state.listings.filter(el => el._id !== this.props.match.params.id)
         })
 
-        window.location = '/';
+        this.props.history.push('/');
       })
       .catch((err) => { 
         console.log(err) 
@@ -310,4 +310,4 @@ class ViewListing extends React.Component {
   }
 }
 
-export default ViewListing;
+export default withRouter(ViewListing);

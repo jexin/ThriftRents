@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import {Container, Form, Col, Row, Button, InputGroup, FormControl, Alert, Badge } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -422,14 +422,14 @@ class ListingForm extends React.Component {
       axios.post('https://thriftrents.herokuapp.com/listings/add', data)
       .then(res => {
         console.log(res.data);
-        window.location.href = '/';
+        this.props.history.push('/');
       })
       .catch((err) => console.log(err))
     } else {
       axios.post(`https://thriftrents.herokuapp.com/listings/update/${this.props.match.params.id}`, data)
       .then(res => {
-          console.log(res.data);
-          window.location.href = `/details/${this.props.match.params.id}`;
+        console.log(res.data);
+        this.props.history.push(`/details/${this.props.match.params.id}`);
       })
       .catch((err) => console.log(err))
     }
@@ -1040,4 +1040,4 @@ class ListingForm extends React.Component {
   }
 }
 
-export default ListingForm;
+export default withRouter(ListingForm);
