@@ -86,8 +86,9 @@ class ShowListings extends React.Component {
           >
             <Card.Img 
               variant="top" 
+              height="150"
               src={`data:image/png;base64,${this.processBuffer(listing.images[0].data)}`} 
-              alt="Listing Image"
+              alt="Listing"
             />
             <Card.Body>
               <Card.Title className="card-title">
@@ -118,9 +119,15 @@ class ShowListings extends React.Component {
             className={hover}
           >
             <div className="popover">
-              <p>{listing.title}</p>
-              <p className="text-muted">{listing.type}</p>
-              <p>{listing.bed} bed | {listing.bath} bath</p>
+              <img 
+                src={`data:image/png;base64,${this.processBuffer(listing.images[0].data)}`}
+                alt="Listing"
+              />
+              <p>
+                <span className="text-muted">{listing.type}</span> &#8226; {' '}
+                {listing.bed} bed | {listing.bath} bath <br />
+                {listing.title}
+              </p>
             </div>
             <div className={`marker-content ${hovered}`}>${listing.price}</div>
           </Marker>

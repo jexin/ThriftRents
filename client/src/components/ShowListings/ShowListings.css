@@ -39,8 +39,8 @@
   color: initial;
   font-weight: bold;
   font-size: 12px;
-  border-radius: 1em;
-  border: 2px solid rgb(200, 200, 200);
+  border-radius: 1.5em;
+  border: 1.5px solid rgb(200, 200, 200);
   background-color: white;
   padding: 5px;
   cursor: pointer;
@@ -48,10 +48,19 @@
 
 .popover {
   width: 200px;
+  border-radius: 1em;
+  box-shadow: 0 6px 6px -6px #777;
   overflow-wrap: break-word;
   text-align: center;
   display: none;
-  transform: translate(-50%, -100%); 
+  padding: 0px;
+  transform: translate(-50%, -105%); 
+}
+
+.popover img {
+  width: 200px;
+  border-radius: 1em 1em 0 0;
+  margin: -1.5px -1.5px 15px -1.5px;
 }
 
 .marker-content:hover, .hovered {
