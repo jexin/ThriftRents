@@ -86,7 +86,7 @@ class ListingForm extends React.Component {
           for (var i = 0; i < res.data.images.length; i++) {
             images.push(new File([Buffer.from(res.data.images[i].data)], 'Image' + i,{ type: "image/png" }));
           }
-          res.data.rows.map((row, i) => {
+          res.data.rows.forEach((row, i) => {
             row.id = i;
           })
 
