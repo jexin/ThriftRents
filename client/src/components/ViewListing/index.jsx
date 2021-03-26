@@ -108,6 +108,8 @@ class ViewListing extends React.Component {
             className="d-block w-100"
             src={`data:image/png;base64,${this.processBuffer(image.data)}`}
             alt="Image"
+            height="400"
+            style={{objectFit: "contain"}}
           />
         </Carousel.Item>
       )

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { CardDeck, Card, Col, Row } from 'react-bootstrap';
+import { CardDeck, Card, Col, Row, Carousel, Image } from 'react-bootstrap';
 import axios from 'axios';
 import moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -67,6 +67,27 @@ class ShowListings extends React.Component {
     return window.btoa(binary);
   }
 
+  loadImages(images, object) {
+    return images.map((image, i) => {
+      return (
+        <Carousel.Item key={i}>
+          <Image
+            className="d-block w-100"
+            src={`data:image/png;base64,${this.processBuffer(image.data)}`}
+            alt="Image"
+            height="150"
+            style={object === 'card' ? 
+              {objectFit: "cover"} 
+              : {objectFit: "cover",
+              borderRadius: "1em 1em 0 0", 
+              marginBottom: "15px"}
+            }
+          />
+        </Carousel.Item>
+      )
+    })
+  }
+
   updateListings(updatedListings) {
     this.setState({
       listings: updatedListings
@@ -84,12 +105,9 @@ class ShowListings extends React.Component {
             onMouseLeave={this.cardHoverOut.bind(this)}
             className="card-link h-100" 
           >
-            <Card.Img 
-              variant="top" 
-              height="150"
-              src={`data:image/png;base64,${this.processBuffer(listing.images[0].data)}`} 
-              alt="Listing"
-            />
+            <Carousel interval={null} className="mb-2">
+              {this.loadImages(listing.images, 'card')}
+            </Carousel>
             <Card.Body>
               <Card.Title className="card-title">
                 ${listing.price}/month 
@@ -119,10 +137,9 @@ class ShowListings extends React.Component {
             className={hover}
           >
             <div className="popover">
-              <img 
-                src={`data:image/png;base64,${this.processBuffer(listing.images[0].data)}`}
-                alt="Listing"
-              />
+              <Carousel interval={null}>
+                {this.loadImages(listing.images)}
+              </Carousel>
               <p>
                 <span className="text-muted">{listing.type}</span> &#8226; {' '}
                 {listing.bed} bed | {listing.bath} bath <br />

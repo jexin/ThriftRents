@@ -8,7 +8,7 @@ function Footer() {
     <footer>
       <div className="footer">
         <FontAwesomeIcon icon={faCopyright} id="cp" />
-        2020 ThriftRents
+        2021 ThriftRents
       </div>
     </footer>
   )
