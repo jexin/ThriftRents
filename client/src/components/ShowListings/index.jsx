@@ -177,9 +177,7 @@ class ShowListings extends React.Component {
                   onViewportChange={(viewport) => this.setState({viewport})}
                   >
                   {this.mapListings()}
-                  <div id="map-controls">
-                    <NavigationControl />
-                  </div>
+                  <NavigationControl style={{right: 10, top: 10}} />
                 </ReactMapGL>
               </div>
             </Col>
